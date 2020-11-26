@@ -1,4 +1,4 @@
-package com.ulisesbocchio.security.saml;
+package com.mclebtec.security.saml;
 
 import com.maclebtec.security.saml.SamlServiceProviderApplication;
 import org.junit.Test;
