@@ -1,0 +1,10 @@
+server:
+  port: 8081
+management:
+  security:
+    enabled: false
+  context-path: "/manage"
+security:
+  require-ssl: true
+
+logging.level.org.springframework.security.saml: DEBUG
