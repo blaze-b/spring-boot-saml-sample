@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOGS" value="./logs"/>
+    <springProperty scope="context" name="applicationName" source="spring.application.name"
+                    defaultValue="promt"/>
+
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{ISO8601} [${applicationName}][${HOSTNAME}][%thread][%highlight(%-5level)] %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="RollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGS}/${applicationName}_${HOSTNAME}.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <!--            <Pattern>%black(%d{ISO8601}) %highlight(%-5level) [%blue(%t)] %yellow(%C{1.}): %msg%n%throwable</Pattern>-->
+            <!--            <pattern>%date [%thread] %-5level %logger{80} - %msg%n</pattern>-->
+            <Pattern>%d{ISO8601} [${applicationName}][${HOSTNAME}][%thread][%-5level] %logger{36} - %msg%n</Pattern>
+        </encoder>
+
+        <rollingPolicy
+                class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGS}/archived/${applicationName}_${HOSTNAME}-%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+
+            <!-- rollover daily and when the file reaches 10 MegaBytes -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <!-- keep 30 days' worth of history -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Default log configuration -->
+    <root level="INFO">
+        <appender-ref ref="RollingFile"/>
+        <appender-ref ref="Console"/>
+    </root>
+
+</configuration>
