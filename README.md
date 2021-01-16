@@ -44,28 +44,28 @@ To use okta with this sample applicatio, you'll have to:
 - Create an [Okta developers account](https://www.okta.com)
 - Add a sample saml connector details
 - Configure the okta application with:
-  - *Single Sign On URL* http://localhost:8081/saml/SSO
-  - *Recipient URL* http://localhost:8081/saml/SSO
-  - *Destination URL* http://localhost:8081/saml/SSO
-  - *Audience Restriction* http://localhost:8081/saml/metadata
-  - *Default Relay State* Any value can be provided
-  - *Name ID Format* Unspecified
-  - *Response* Signed
-  - *Assertion Signature* Signed
-  - *Signature Algorithm* RSA_SHA256
+  - *Single Sign On URL* `http://localhost:8081/saml/SSO`
+  - *Recipient URL* `http://localhost:8081/saml/SSO`
+  - *Destination URL* `http://localhost:8081/saml/SSO`
+  - *Audience Restriction* `http://localhost:8081/saml/metadata`
+  - *Default Relay State* `Any value can be provided`
+  - *Name ID Format* `Unspecified`
+  - *Response* `Signed`
+  - *Assertion Signature* `Signed`
+  - *Signature Algorithm* `RSA_SHA256`
   - *Digest Algorithm* SHA256
   - *Assertion Encryption* Unencrypted
-  - *Single Logout URL* http://localhost:8081/saml/logout
-  - *SP Issuer* http://localhost:8081/saml/metadata
+  - *Single Logout URL* `http://localhost:8081/saml/logout`
+  - *SP Issuer* `http://localhost:8081/saml/metadata`
   - *Signature Certificate* Upload the localhost.cert which is the X509 PEM certificate
-  - *Authentication context class* X509 certificate
-  - *Honor Force Authentication* No
-  - *SAML Issuer ID* Default value
-  - *Paramters* configure some paramters for display
+  - *Authentication context class* `X509 certificate`
+  - *Honor Force Authentication* `No`
+  - *SAML Issuer ID* `Default value`
+  - *Paramters* Configure some paramters for display
 - Final generated metadata file should be copy pasted in the idp-okta.xml
   
 ### Commands to create Self signed certificates
 
-- *CMD to create the RSA key*: openssl genrsa -out localhost.key 2048
-- *CMD to generate the cer file*: openssl req -new -x509 -key localhost.key -out localhost.cer -days 365
-- *CMD to create the der file*: openssl pkcs8 -topk8 -nocrypt -in localhost.key -outform DER -out localhost.key.der
+- *CMD to create the RSA key*: `openssl genrsa -out localhost.key 2048`
+- *CMD to generate the cer file*: `openssl req -new -x509 -key localhost.key -out localhost.cer -days 365`
+- *CMD to create the der file*: `openssl pkcs8 -topk8 -nocrypt -in localhost.key -outform DER -out localhost.key.der`
