@@ -12,13 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.saml.SAMLCredential;
 import org.springframework.security.saml.userdetails.SAMLUserDetailsService;
 
-/**
- * Default Implementation of {@link UserDetails} for Spring Boot Security SAML. This simple implementation hardly covers all security aspects since it's mostly
- * hardcoded. I.E. accounts are never locked, expired, or disabled, and always eturn the same granted authority "ROLE_USER". Consider implementing your own
- * {@link UserDetails} and {@link SAMLUserDetailsService}.
- *
- * @author Ulises Bocchio
- */
+
 public class SAMLUserDetails implements UserDetails {
 
   private SAMLCredential samlCredential;
